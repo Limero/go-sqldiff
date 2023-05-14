@@ -35,7 +35,7 @@ func TestCompare(t *testing.T) {
 
 	db1 := createFakeDatabase(
 		t,
-		"/tmp/testdb1.sql",
+		"/tmp/source.db",
 		schema,
 		"INSERT INTO tablename (column1, column2) VALUES ('abc', 1)",
 		"INSERT INTO tablename (column1, column2) VALUES ('def', 0)",
@@ -43,7 +43,7 @@ func TestCompare(t *testing.T) {
 	defer os.Remove(db1)
 	db2 := createFakeDatabase(
 		t,
-		"/tmp/testdb2.sql",
+		"/tmp/target.db",
 		schema,
 		"INSERT INTO tablename (column1, column2) VALUES ('abc', 0)",
 		"INSERT INTO tablename (column1, column2) VALUES ('def', 1)",

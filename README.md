@@ -15,3 +15,9 @@ dnf install sqlite-tools
 ```
 brew install sqldiff
 ```
+
+## Usage
+
+```
+diffs, err := sqldiff.Compare("/tmp/source.db", "/tmp/target.db")
+```
