@@ -3,7 +3,7 @@ module github.com/limero/go-sqldiff
 go 1.20
 
 require (
-	github.com/bvinc/go-sqlite-lite v0.6.1
+	github.com/mattn/go-sqlite3 v1.14.16
 	github.com/stretchr/testify v1.8.2
 )
 

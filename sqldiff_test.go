@@ -1,25 +1,25 @@
 package sqldiff
 
 import (
+	"database/sql"
 	"os"
 	"testing"
-	"time"
 
-	"github.com/bvinc/go-sqlite-lite/sqlite3"
+	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func createFakeDatabase(t *testing.T, path string, queries ...string) string {
-	conn, err := sqlite3.Open(path)
+	db, err := sql.Open("sqlite3", path)
 	if err != nil {
 		require.NoError(t, err)
 	}
-	defer conn.Close()
-	conn.BusyTimeout(5 * time.Second)
+	defer db.Close()
 
 	for _, query := range queries {
-		require.NoError(t, conn.Exec(query))
+		_, err := db.Exec(query)
+		require.NoError(t, err)
 	}
 
 	return path
